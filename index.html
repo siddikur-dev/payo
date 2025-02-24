@@ -3,15 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- tailwindCDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- daisy -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.8/daisyui.css"
       rel="stylesheet"
       type="text/css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "button-color": "#0874F2",
+              "input-color": "#F4F5F7",
+            },
+          },
+        },
+      };
+    </script>
   </head>
   <body class="bg-slate-800">
-    <section class="max-w-md min-h-screen mx-auto py-5 bg-white"></section>
+    <!-- first page -->
+    <section class="m max-w-md min-h-screen mx-auto py-5 bg-white">
+      <!-- header -->
+      <header>
+        <nav class="flex justify-center items-center">
+          <div class="w-3/6 pt-32">
+            <img class="" src="img-resouces/Rectangle 1.png" alt="" />
+            <img class="-mt-44 mx-auto" src="img-resouces/Group.png" alt="" />
+          </div>
+        </nav>
+        <!-- input field -->
+        <div class="hero min-h-screen">
+          <div class="hero-content flex-col lg:flex-row-reverse">
+            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+              <form class="card-body">
+                <div class="form-control mb-3">
+                  <label class="label">
+                    <span class="font-medium mb-2 text-black text-sm"
+                      >Mobile Number</span
+                    >
+                  </label>
+                  <input
+                    value="01745896478"
+                    id="login-number"
+                    type="number"
+                    placeholder="Enter Your Number"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    required
+                  />
+                </div>
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text font-medium text-sm text-black"
+                      >Pin</span
+                    >
+                  </label>
+                  <input
+                    id="login-pin"
+                    value="1258"
+                    type="number"
+                    placeholder="Enter Your Pin"
+                    class="input bg-input-color py-2 px-3 rounded-4xl"
+                    required
+                  />
+                </div>
+                <div class="mx-auto mt-4">
+                  <button
+                    id="login-btn"
+                    class="bg-button-color px-32 py-2 rounded-3xl text-white font-medium text-xl"
+                  >
+                    Login
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </header>
+    </section>
+    <script src="js/login.js"></script>
   </body>
 </html>
