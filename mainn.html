@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- tailwindCDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- daisy -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.8/daisyui.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>payo</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "button-color": "#0874F2",
+              "input-color": "#F4F5F7",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-slate-800 outfit-font">
+    <section class="max-w-md min-h-screen mx-auto bg-gray-200">
+      <!-- header section  -->
+      <header class="bg-slate-50 pt-4 pb-8 rounded-b-2xl">
+        <!-- navbar  -->
+        <nav class="flex justify-between items-center mx-6">
+          <div class="flex sm:gap-2 items-center">
+            <img class="w-14" src="img-resouces/Group.png" alt="this is logo" />
+            <div>
+              <h1 class="text-xl sm:text-2xl font-bold">
+                ৳ <span id="main-balance">700</span>
+              </h1>
+              <p class="text-xs sm:text-sm text-[#08080880]">
+                Available Balance
+              </p>
+            </div>
+          </div>
+          <!-- logout button  -->
+          <div class="">
+            <button
+              id="btn-logout"
+              class="btn flex gap-2 border-2 rounded-lg border-gray-300 py-2 px-1 sm:px-3 hover:bg-[#0874F20D] hover:border-[#0874F2]"
+            >
+              <!-- <img src="assets/icons/logout.svg" alt="this is logout images" /> -->
+              <p class="text-sm text-[#08080880]">Log Out</p>
+            </button>
+          </div>
+        </nav>
+        <hr class="text-gray-300 border-1 mt-6" />
+        <!-- welcome to payoo section  -->
+        <section class="mx-6 mt-8">
+          <!-- card section   -->
+          <div class="pt-6 grid grid-cols-3 gap-3">
+            <!-- add money  -->
+            <div
+              id="add-money-option"
+              class="cursor-pointer py-5 border-2 border-gray-300 rounded-lg hover:bg-[#0874F20D] hover:border-[#0874F2]"
+            >
+              <img class="mx-auto" src="img-resouces/s.png" alt="add " />
+              <p class="text-sm pt-2 text-[#080808B3] text-center">Add Money</p>
+            </div>
+            <!-- Cash Out  -->
+            <div
+              id="cash-out-option"
+              class="cursor-pointer py-5 border-2 border-gray-300 rounded-lg hover:bg-[#0874F20D] hover:border-[#0874F2]"
+            >
+              <img
+                class="mx-auto"
+                src="img-resouces/send 1.png"
+                alt="Cash Out logo"
+              />
+              <p class="text-sm pt-2 text-[#080808B3] text-center">Cash Out</p>
+            </div>
+            <!-- Transfer Money  -->
+            <div
+              id="transfer-money-option"
+              class="cursor-pointer py-5 border-2 border-gray-300 rounded-lg hover:bg-[#0874F20D] hover:border-[#0874F2]"
+            >
+              <img
+                class="mx-auto"
+                src="img-resouces/money 1 (1).png"
+                alt="Transfer Money logo"
+              />
+              <p class="text-sm pt-2 text-[#080808B3] text-center">
+                Transfer <span class="hidden sm:inline">Money</span>
+              </p>
+            </div>
+            <!-- Get Bonus -->
+            <div
+              id="get-bonus-option"
+              class="cursor-pointer py-5 border-2 border-gray-300 rounded-lg hover:bg-[#0874F20D] hover:border-[#0874F2]"
+            >
+              <img
+                class="mx-auto"
+                src="img-resouces/financial 1.png"
+                alt="Get Bonus logo"
+              />
+              <p class="text-sm pt-2 text-[#080808B3] text-center">Get Bonus</p>
+            </div>
+            <!-- Pay Bill -->
+            <div
+              id="pay-bill-option"
+              class="cursor-pointer py-5 border-2 border-gray-300 rounded-lg hover:bg-[#0874F20D] hover:border-[#0874F2]"
+            >
+              <img
+                class="mx-auto"
+                src="img-resouces/addm.png"
+                alt="Pay Bill logo"
+              />
+              <p class="text-sm pt-2 text-[#080808B3] text-center">Pay Bill</p>
+            </div>
+            <!-- Transaction -->
+            <div
+              id="tr-history-option"
+              class="cursor-pointer py-5 border-2 border-gray-300 rounded-lg hover:bg-[#0874F20D] hover:border-[#0874F2]"
+            >
+              <img
+                class="mx-auto"
+                src="img-resouces/transaction.png"
+                alt=" Transaction logo"
+              />
+              <p class="text-sm pt-2 text-[#080808B3] text-center">
+                Transaction
+              </p>
+            </div>
+          </div>
+        </section>
+      </header>
+      <!-- main section  -->
+      <main>
+        <!-- add money section  -->
+
+        <section id="addMoney">
+          <p
+            class="text-center px-8 text-xl font-medium text-[#0874F2] pt-7 pb-2"
+          >
+            Add Money
+          </p>
+
+          <div class="hero-content flex-col lg:flex-row-reverse">
+            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+              <div class="card-body">
+                <!-- Select A Bank  -->
+                <label
+                  class="  fieldset-label text-base text-[#080808B3] font-medium"
+                  >Select A Bank</label
+                >
+                <select id="select-bank" class="rounded-4xl input bg-input-color py-2 px-3 select ">
+                  <option disabled selected>Select Bank</option>
+                  <option value="Bkash">Bkash</option>
+                  <option value="Nagad">Nagad</option>
+                  <option value="Rocket">Rocket</option>
+                  <option value="MCash">MCash</option>
+                  <option value="Upay">Upay</option>
+                </select>
+                <fieldset class="fieldset">
+                  <!-- Bank Account number -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Bank Account Number</label
+                  >
+                  <input
+                    value="01745896478"
+                    id="account-number"
+                    type="number"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Enter 11 Digit Acount Number"
+                    required
+                  />
+
+                  <!-- Add Amount  -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Amount to Add</label
+                  >
+                  <input
+                    id="add-amount"
+                    type="number"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Enter Your Amount"
+                    required
+                  />
+                  <!-- Pin Number  -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Pin Number</label
+                  >
+                  <input
+                    value="1258"
+                    id="pin-number"
+                    type="text"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Enter Your Pin Number"
+                    required
+                  />
+
+                  <button
+                    id="btn-add-money"
+                    class="bg-button-color px-32 py-2 rounded-3xl text-white font-medium text-sm"
+                  >
+                    Add Money
+                  </button>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- cash out section  -->
+        <section id="cashOut">
+          <p
+            class="text-center px-8 text-xl font-medium text-[#0874F2] pt-7 pb-2"
+          >
+            Cash Out
+          </p>
+
+          <div class="hero-content flex-col lg:flex-row-reverse">
+            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+              <div class="card-body">
+                <fieldset class="fieldset">
+                  <!-- Bank Account number -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Agent Number</label
+                  >
+                  <input
+                    value="01521406742"
+                    id="agent-number"
+                    type="number"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Enter 11 Digit Agent Number"
+                    required
+                  />
+
+                  <!-- CashOut Amount  -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Amount to Cash Out</label
+                  >
+                  <input
+                    id="cashOut-amount"
+                    type="number"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Enter Your Amount"
+                    required
+                  />
+                  <!-- Pin Number  -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Pin Number</label
+                  >
+                  <input
+                    value="1258"
+                    id="cashOut-pin-number"
+                    type="text"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Enter Your Pin Number"
+                    required
+                  />
+
+                  <button
+                    id="btn-cash-out"
+                    class="bg-button-color px-32 py-2 rounded-3xl text-white font-medium text-sm"
+                  >
+                    Cash Out
+                  </button>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Transfer Money section  -->
+        <section id="transferMoney">
+          <p
+            class="text-center px-8 text-xl font-medium text-[#0874F2] pt-7 pb-2"
+          >
+            Transfer Money
+          </p>
+
+          <div class="hero-content flex-col lg:flex-row-reverse">
+            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+              <div class="card-body">
+                <fieldset class="fieldset">
+                  <!-- User Account number -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >User Account Number</label
+                  >
+                  <input
+                    value="01521406742"
+                    id="user-account-number"
+                    type="number"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Enter 11 Digit  Number"
+                    required
+                  />
+
+                  <!-- transfer Amount  -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Amount to Transfer</label
+                  >
+                  <input
+                    id="transfer-amount"
+                    type="number"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Enter Your Amount"
+                    required
+                  />
+                  <!-- Pin Number  -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Pin Number</label
+                  >
+                  <input
+                    value="1258"
+                    id="transfer-pin-number"
+                    type="text"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Enter Your Pin Number"
+                    required
+                  />
+
+                  <button
+                    id="btn-transfer"
+                    class="bg-button-color px-32 py-2 rounded-3xl text-white font-medium text-sm"
+                  >
+                    Transfer Money
+                  </button>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Get Bonus section  -->
+        <section id="getBonus">
+          <p
+            class="text-center px-8 text-xl font-medium text-[#0874F2] pt-7 pb-2"
+          >
+            Get Bonus
+          </p>
+
+          <div class="hero-content flex-col lg:flex-row-reverse">
+            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+              <div class="card-body">
+                <fieldset class="fieldset">
+                  <!-- Get Bonus Amount  -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Apply Coupon</label
+                  >
+                  <input
+                    value="Hero-Alom"
+                    id="coupon-code"
+                    type="text"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Apply Your Coupon"
+                    required
+                  />
+                  <!-- Pin Number  -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Pin Number</label
+                  >
+                  <input
+                    value="1258"
+                    id="bonus-pin-number"
+                    type="text"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Enter Your Pin Number"
+                    required
+                  />
+
+                  <button
+                    id="btn-get-bonus"
+                    class="bg-button-color px-32 py-2 rounded-3xl text-white font-medium text-sm"
+                  >
+                    Get Bonus
+                  </button>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Pay Bill section  -->
+
+        <section id="payBill">
+          <p
+            class="text-center px-8 text-xl font-medium text-[#0874F2] pt-7 pb-2"
+          >
+            Pay Bill
+          </p>
+
+          <div class="hero-content flex-col lg:flex-row-reverse">
+            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+              <div class="card-body">
+                <!-- Select A Bank  -->
+                <label
+                  class="fieldset-label text-base text-[#080808B3] font-medium"
+                  >Select to Pay</label
+                >
+                <select id="select-pay" class="select rounded-4xl input bg-input-color py-2 px-3">
+                  <option disabled selected>Bill Type</option>
+                  <option value="Electricity">Electricity-Bill</option>
+                  <option value="Gas-Karnafuli">Gas-Bill</option>
+                  <option value="Link3">Wifi-Bill</option>
+                  <!-- <option value="Nesco">/</option> -->
+                  <option value="Palli-Bidyut">Water Bill</option>
+                </select>
+                <fieldset class="fieldset">
+                  <!-- Bank Account number -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Biller Account Number</label
+                  >
+                  <input
+                    value="01521406742"
+                    id="billPay-account-number"
+                    type="number"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Enter Biller Acount Number"
+                    required
+                  />
+
+                  <!-- Add Amount  -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Amount to Pay</label
+                  >
+                  <input
+                    id="payBill-amount"
+                    type="number"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Pay Bill Amount"
+                    required
+                  />
+                  <!-- Pin Number  -->
+                  <label
+                    class="fieldset-label text-base text-[#080808B3] font-medium"
+                    >Pin Number</label
+                  >
+                  <input
+                    value="1258"
+                    id="payBill-pin-number"
+                    type="text"
+                    class="rounded-4xl input bg-input-color py-2 px-3"
+                    placeholder="Enter Your Pin Number"
+                    required
+                  />
+
+                  <button
+                    id="btn-pay-bill"
+                    class="bg-button-color px-32 py-2 rounded-3xl text-white font-medium text-sm"
+                  >
+                    Pay Bill
+                  </button>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Transaction History  -->
+        <section id="transactionHistory" class="px-6">
+          <p
+            class="text-center px-8 text-xl font-medium text-[#0874F2] pt-7 pb-2"
+          >
+            Transaction History
+          </p>
+          <!-- all transaction  -->
+          <div class="mt-3 grid gap-2">
+            <!-- Mobile Recharge  -->
+            <div
+              class="flex hover:bg-[#F7A93f] justify-between items-center bg-white px-4 py-2 rounded-md"
+            >
+              <div class="flex gap-4 justify-center items-center">
+                <div class="bg-slate-100 rounded-full p-3">
+                  <img class="mx-auto" src="img-resouces/tr" alt="" />
+                </div>
+                <div class="grid -gap-1">
+                  <p class="font-semibold text-[#080808B3]">mobile recharge</p>
+                  <small class="text-xs text-[#080808B3]">3 Minutes Ago</small>
+                </div>
+              </div>
+              <div>
+                <img src="assets/icons/details.svg" alt="" />
+              </div>
+            </div>
+            <!-- Pay bill  -->
+            <div
+              class="flex justify-between items-center bg-white px-4 py-2 rounded-md hover:bg-[#F7A93f]"
+            >
+              <div class="flex gap-4 justify-center items-center">
+                <div class="bg-slate-100 rounded-full p-3">
+                  <img class="mx-auto" src="assets/icons/pay-bill.svg" alt="" />
+                </div>
+                <div class="grid -gap-1">
+                  <p class="font-semibold text-[#080808B3]">
+                    Electricity Bill Paid
+                  </p>
+                  <small class="text-xs text-[#080808B3]">Today 10:20 PM</small>
+                </div>
+              </div>
+              <div>
+                <img src="assets/icons/details.svg" alt="" />
+              </div>
+            </div>
+            <!-- Transfer money  -->
+            <div
+              class="flex justify-between items-center bg-white px-4 py-2 rounded-md hover:bg-[#0DB89A]"
+            >
+              <div class="flex gap-4 justify-center items-center">
+                <div class="bg-slate-100 rounded-full p-3">
+                  <img
+                    class="mx-auto"
+                    src="assets/icons/transfer-money.svg"
+                    alt=""
+                  />
+                </div>
+                <div class="grid -gap-1">
+                  <p class="font-semibold text-[#080808B3]">
+                    Transfer to Bkash
+                  </p>
+                  <small class="text-xs text-[#080808B3]">Today 02:10 AM</small>
+                </div>
+              </div>
+              <div>
+                <!-- <img src="assets/icons/details.svg" alt="" /> -->
+              </div>
+            </div>
+            <!-- add money  -->
+            
+              <div>
+                <img src="assets/icons/details.svg" alt="" />
+              </div>
+            </div>
+            <!-- Get Bonus money  -->
+            <div
+              class="flex justify-between items-center bg-white px-4 py-2 rounded-md hover:bg-[#0DB89A]"
+            >
+              <div class="flex gap-4 justify-center items-center">
+                <div class="bg-slate-100 rounded-full p-3">
+                  <img
+                    class="mx-auto"
+                    src="assets/icons/get-bonus.svg"
+                    alt=""
+                  />
+                </div>
+                <div class="grid -gap-1">
+                  <p class="font-semibold text-[#080808B3]">
+                    Got Bonus from Coupon
+                  </p>
+                  <small class="text-xs text-[#080808B3]"
+                    >Yesterday 09:33 PM</small
+                  >
+                </div>
+              </div>
+              <div>
+                <img src="assets/icons/details.svg" alt="" />
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </section>
+    <script src="./js/toggle.js"></script>
+    <script src="./js/addMoney.js"></script>
+    <script src="./js/cashout.js"></script>
+    <script src="./js/transferMoney.js"></script>
+    <script src="./js/getBonus.js"></script>
+    <script src="./js/payBill.js"></script>
+  </body>
+</html>

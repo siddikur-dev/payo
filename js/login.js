@@ -8,7 +8,7 @@ document
     if (mobileNumber.length === 11) {
       if (mobilePin.length === 4) {
         // console.log("Succefully Login");
-        window.location.href = "main.html";
+        window.location.href = "mainn.html";
       } else {
         alert("Please valid pin");
       }
